@@ -25,7 +25,7 @@ This project implements an automated trading signal generator for the Southern C
 
 The Lambda function is containerized using Docker and triggered by AWS EventBridge on a scheduled basis.
 
-<img src="architecture.png">
+<img src="architecture.png" width="500" height="300">
 
 <h2>Repository structure</h2>
 - lambda.py:        Main Lambda handler function
