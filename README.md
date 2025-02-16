@@ -28,7 +28,7 @@ The Lambda function is containerized using Docker and triggered by AWS EventBrid
 <p align="center">
   <img src="architecture.png" height="400">
 </p>
-
+<br>
 <h2>Repository structure</h2>
 - lambda.py:        Main Lambda handler function
 - functions.py:     Utility functions for data retrieval, processing, modeling, and notifications
