@@ -24,7 +24,9 @@
 </ul>
 <p>The Lambda function is containerized using Docker and triggered by AWS EventBridge on a scheduled basis.</p>
 
-
+<p align="center">
+ <img src="architecture.png" height="300">
+</p>
 
 <h2>Repository Structure</h2>
 <ul>
