@@ -65,7 +65,7 @@ cd algorithmic-trading-notification</code></pre>
 <h3>2) Configure the Environment</h3>
 <ul>
   <li>Obtain an Alpha Vantage API key. This will be used to fetch historical stock data.</li>
-  <li>Email Notifications: Create a default sender email, a password, and a receiver email in the send_email function. For more information, search for Google’s App Password.</li>
+  <li>Email Notifications: Create a default sender email, a password, and a receiver email in the <code>send_email</code> function. For more information, search for Google’s App Password.</li>
   <li>S3 Bucket: Ensure the bucket name and object key in <code>get_s3_data()</code> and <code>store_s3_data()</code> match your AWS configuration.</li>
   <li>Historical Data Initialization: Extract all available data from the Alpha Vantage API to create the initial Historical Data CSV file.</li>
   <li>Install Dependencies Locally: <code>pip install -r requirements.txt</code>.</li>
