@@ -326,7 +326,7 @@ def calculate_prediction_probability(X, y, row_to_predict):
         'min_child_weight': 0,
         'objective': 'binary:logistic',
     }
-    num_boost_round = 130
+    num_boost_round = 115
 
     final_model = xgb.train(
         best_param,
