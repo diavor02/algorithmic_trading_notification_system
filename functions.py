@@ -18,19 +18,19 @@ price_moving_average_periods = [2, 4, 7, 11, 16, 22, 30]
 volume_moving_average_periods = [2, 4, 7]
 
 
-def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = 'LDS6QLMELH5AYPSI') -> Optional[Dict]:
+def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = '...') -> Optional[Dict]:
     """Retrieve daily stock data from Alpha Vantage API.
 
     Args:
         symbol: Stock ticker symbol (default: 'SO')
-        api_key: Alpha Vantage API key (default: demo key)
+        api_key: Alpha Vantage API key
 
     Returns:
-        Dictionary of daily time series data or None if error occurs
+        Dictionary of daily time series data or None if an error occurs
 
-    Note:
+    Notes:
         The Southern Company (SO) is chosen for its stable growth patterns, 
-        which imporves model performance. Returns the last 100 daily records 
+        which improve model performance. Returns the last 100 daily records 
         as specified by the 'compact' output size.
     """
     base_url = 'https://www.alphavantage.co/query'
@@ -55,10 +55,7 @@ def get_current_day_records() -> Optional[pd.Series]:
     """Retrieve current day's stock records using Alpha Vantage API.
 
     Returns:
-        Pandas Series with closing price and volume, or None if error occurs
-
-    Note:
-        Uses default parameters from get_alpha_vantage_data (symbol='SO')
+        Pandas Series with closing price and volume, or None if an error occurs
     """
     data = get_alpha_vantage_data()
     if data is None:
@@ -85,7 +82,7 @@ def get_s3_data(bucket_name: str = "algtradingbucket",
         object_key: S3 object key/path (default: 'historical_data.csv')
 
     Returns:
-        DataFrame containing historical records or None if error occurs
+        DataFrame containing historical records or None if an error occurs
     """
     try:
         s3 = boto3.client("s3")
@@ -105,7 +102,8 @@ def get_rolling_prices(df: pd.DataFrame,
     Args:
         df: the dataframe containing historical values
         periods: List of window sizes for moving averages
-        current_price: Latest closing price
+        current_price: Latest closing price, not part of the historical 
+                       dataframe
 
     Returns:
         List of moving averages for each specified period
@@ -123,7 +121,8 @@ def get_rolling_volumes(df: pd.DataFrame,
     Args:
         df: the dataframe containing historical values
         periods: List of window sizes for moving averages
-        current_volume: Latest trading volume
+        current_volume: Latest trading volume, not part of the historical 
+                        dataframe
 
     Returns:
         List of moving averages for each specified period
@@ -136,14 +135,14 @@ def sin_cos_transformation(newRow: pd.Series) -> Tuple[float, float]:
     """Convert date to cyclical sine/cosine features.
 
     Args:
-        newRow: the series containing raw data about the corrent day
+        newRow: the series containing raw data about the current day
 
     Returns:
         Tuple of (sin(day_of_year), cos(day_of_year)) values
     """
     date = pd.to_datetime(newRow.name)
     day_of_year = date.timetuple().tm_yday
-    angle = 2 * np.pi * day_of_year / 252  # 252 trading days/year
+    angle = 2 * np.pi * day_of_year / 252  # approximately 252 trading days/year
     
     return np.sin(angle), np.cos(angle)
 
@@ -157,12 +156,12 @@ def process_new_row(newRow, df):
     3) Encoding cyclical date features using sine-cosine transformation
 
     Args:
-        newRow: the series containing raw data about the corrent day
+        newRow: the series containing raw data about the current day
         df: the dataframe containing historical values
 
     Returns:
         pd.DataFrame: A new dataframe row with transformed features ready 
-            for model input.
+                      for model input.
     """
 
     newRow['volume'] = np.log(float(newRow['volume']))
@@ -195,8 +194,8 @@ def set_target_value_previous_day(df):
     current data.
     
     Modifies the target column (-1 default) to reflect price movement:
-    - Sets to 1 if current closing price increased compared to previous day
-    - Sets to 0 if current closing price decreased or stayed the same
+    - Sets to 1 if the current closing price increased compared to the previous day
+    - Sets to 0 if the current closing price decreased or stayed the same
     
     Args:
         df: the dataframe containing historical values. Modified in place.
@@ -219,8 +218,8 @@ def store_s3_data(df: pd.DataFrame,
     Args:
         df: the dataframe containing historical values (now updated)
             Its features are: 
-            - closing_prices
-            - volume 
+            - closing prices
+            - volume data
             - mean_2, 4, 7, 11, 16, 22, 30 (representing price moving averages)
             - volume_2, 4, 7 (representing volume moving averages)
             - day_sin, day_cos: representing the sin cos transformations
