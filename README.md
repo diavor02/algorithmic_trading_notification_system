@@ -46,7 +46,7 @@
   <li><strong>Notifications:</strong> Sends email alerts with trading recommendations based on prediction probabilities.</li>
   <li><strong>Containerized Deployment:</strong> Packaged as a Docker image for seamless deployment as an AWS Lambda function.</li>
 </ul>
-
+<br>
 <h2>How It Works</h2>
 <h3>1) Data Acquisition & Validation</h3>
 <ul>
