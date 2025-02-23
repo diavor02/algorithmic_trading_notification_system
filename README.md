@@ -30,10 +30,10 @@
 
 <h2>Repository Structure</h2>
 <ul>
-  <li><strong>lambda.py:</strong> Main Lambda handler function</li>
-  <li><strong>functions.py:</strong> Utility functions for data retrieval, processing, modeling, and notifications</li>
-  <li><strong>requirements.txt:</strong> Python dependencies</li>
-  <li><strong>Dockerfile:</strong> Docker configuration for building the Lambda container image</li>
+  <li><strong>lambda.py:</strong> Main Lambda handler function.</li>
+  <li><strong>functions.py:</strong> Utility functions for data retrieval, processing, modeling, and notifications.</li>
+  <li><strong>requirements.txt:</strong> Python dependencies.</li>
+  <li><strong>Dockerfile:</strong> Docker configuration for building the Lambda container image.</li>
 </ul>
 
 <h2>Features</h2>
