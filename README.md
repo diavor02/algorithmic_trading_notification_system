@@ -47,38 +47,6 @@
   <li><strong>Containerized Deployment:</strong> Packaged as a Docker image for seamless deployment as an AWS Lambda function.</li>
 </ul>
 
-<h2>Prerequisites</h2>
-<ul>
-  <li><strong>AWS Account:</strong> For Lambda, S3, and EventBridge.</li>
-  <li><strong>Docker:</strong> Installed locally for building the container image.</li>
-  <li><strong>AWS CLI:</strong> Configured for deploying the container image to AWS Lambda.</li>
-  <li><strong>S3 Bucket:</strong> An S3 bucket (default: algtradingbucket) to store historical CSV data.</li>
-  <li><strong>Alpha Vantage API Key:</strong> Replace the default key in functions.py if necessary.</li>
-  <li><strong>Email Credentials:</strong> Valid SMTP credentials for sending email notifications (configured in the send_email function).</li>
-</ul>
-
-<h2>Setup Instructions</h2>
-<h3>1) Clone the Repository</h3>
-<pre><code>git clone https://github.com/yourusername/algorithmic-trading-notification.git
-cd algorithmic-trading-notification</code></pre>
-
-<h3>2) Configure the Environment</h3>
-<ul>
-  <li>Obtain an Alpha Vantage API key. This will be used to fetch historical stock data.</li>
-  <li>Email Notifications: Create a default sender email, a password, and a receiver email in the <code>send_email()</code> function. For more information, search for Google’s App Password.</li>
-  <li>S3 Bucket: Ensure the bucket name and object key in <code>get_s3_data()</code> and <code>store_s3_data()</code> match your AWS configuration.</li>
-  <li>Historical Data Initialization: Extract all available data from the Alpha Vantage API to create the initial Historical Data CSV file.</li>
-  <li>Install Dependencies Locally: <code>pip install -r requirements.txt</code>.</li>
-  <li>Build the Docker Image: <code>docker build -t algtrading-lambda .</code></li>
-  <li>Deploy to AWS Lambda:
-    <ul>
-      <li>Push the Image to ECR: Follow AWS documentation to push your Docker image to Amazon ECR.</li>
-      <li>Create/Update a Lambda Function: Configure your Lambda function to use the container image from ECR.</li>
-      <li>Set Up EventBridge: Create an EventBridge rule to trigger your Lambda function every business day.</li>
-    </ul>
-  </li>
-</ul>
-
 <h2>How It Works</h2>
 <h3>1) Data Acquisition & Validation</h3>
 <ul>
