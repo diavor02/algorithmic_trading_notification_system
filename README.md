@@ -2,7 +2,7 @@
 <ul>
   <li><a href="#overview">Overview</a></li>
   <li><a href="#repository-structure">Repository Structure</a></li>
-  <li><a href="#features">Features</a></li>
+  <li><a href="#implementation-details">Implementation details</a></li>
   <li><a href="#how-it-works">How It Works</a></li>
   <li><a href="#dependencies">Dependencies</a></li>
   <li><a href="#licence">Licence</a></li>
