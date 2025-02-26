@@ -3,8 +3,6 @@
   <li><a href="#overview">Overview</a></li>
   <li><a href="#repository-structure">Repository Structure</a></li>
   <li><a href="#features">Features</a></li>
-  <li><a href="#prerequisites">Prerequisites</a></li>
-  <li><a href="#setup-instructions">Setup Instructions</a></li>
   <li><a href="#how-it-works">How It Works</a></li>
   <li><a href="#dependencies">Dependencies</a></li>
   <li><a href="#licence">Licence</a></li>
@@ -14,14 +12,7 @@
 <h1>Algorithmic trading notification system</h1> 
 
 <h2>Overview</h2>
-<p>This project implements an automated trading signal generator for the Southern Company (SO) stock. Every business day, the system:</p>
-<ul>
-  <li>Retrieves the latest market data from the Alpha Vantage API.</li>
-  <li>Fetches historical data stored in an Amazon S3 bucket.</li>
-  <li>Processes and enriches the data by computing technical indicators (e.g., moving averages, cyclic date features) and forecasting next-day prices using an ARIMA model.</li>
-  <li>Generates a trading recommendation using an XGBoost model to predict whether the stock price will increase or decrease.</li>
-  <li>Sends an email notification with the prediction probability and a corresponding BUY/SELL recommendation.</li>
-</ul>
+<p>This project implements an automated trading signal generator for the Southern Company (SO) stock. Every business day, the system computes the probability that the stock value will increase or decrease the next day and sends an appropriate email notification with the response.
 <p>The Lambda function is containerized using Docker and triggered by AWS EventBridge on a scheduled basis.</p>
 
 <p align="center">
@@ -36,7 +27,7 @@
   <li><strong>Dockerfile:</strong> Docker configuration for building the Lambda container image.</li>
 </ul>
 
-<h2>Features</h2>
+<h2>Implementation details</h2>
 <ul>
   <li><strong>Data Acquisition:</strong> Retrieves current market data using the Alpha Vantage API.</li>
   <li><strong>Data Persistence:</strong> Reads and writes historical data to an S3 bucket.</li>
