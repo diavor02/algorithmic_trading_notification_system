@@ -26,7 +26,7 @@
   <li><strong>requirements.txt:</strong> Python dependencies.</li>
   <li><strong>Dockerfile:</strong> Docker configuration for building the Lambda container image.</li>
 </ul>
-
+<br>
 <h2>Implementation details</h2>
 <ul>
   <li><strong>Data Acquisition:</strong> Retrieves current market data using the Alpha Vantage API.</li>
