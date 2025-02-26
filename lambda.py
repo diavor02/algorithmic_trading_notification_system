@@ -91,3 +91,4 @@ def lambda_handler(event, context) -> dict:
         print(f"Critical error in lambda_handler: {str(error)}")
         return {"statusCode": 500, "body": f"Server Error: {str(error)}"}
     
+    
