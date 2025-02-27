@@ -4,7 +4,7 @@ from functions import (get_s3_data, store_s3_data, send_email, get_current_day_r
                        calculate_prediction_probability, set_target_value_previous_day,
                        process_new_row)
 
-EMAIL = "darius.iavorschi@gmail.com"
+EMAIL = "darius.iavorschi@gmail.com" # personal email
 
 
 def lambda_handler(event, context) -> dict:
