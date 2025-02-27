@@ -18,7 +18,7 @@ price_moving_average_periods = [2, 4, 7, 11, 16, 22, 30]
 volume_moving_average_periods = [2, 4, 7]
 
 
-def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = 'LDS6QLMELH5AYPSI') -> Optional[Dict]:
+def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = '') -> Optional[Dict]:
     """Retrieve daily stock data from Alpha Vantage API.
 
     Args:
