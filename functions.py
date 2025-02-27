@@ -319,15 +319,15 @@ def calculate_prediction_probability(X, y, row_to_predict):
 
     # Using the already best-found parameters
     best_param = {
-        'max_depth': 8,
-        'learning_rate': 0.085,
-        'subsample': 0.5,
-        'colsample_bytree': 0.7, 
-        'gamma': 6.5,
-        'min_child_weight': 0,
-        'objective': 'binary:logistic',
+        'max_depth': 7,
+        'learning_rate': 0.1,
+        'subsample': 0.6,
+        'colsample_bytree': 0.6, 
+        'gamma': 6,
+        'min_child_weight': 3,
+        'objective': 'binary:logistic'
     }
-    num_boost_round = 130
+    num_boost_round = 115
 
     final_model = xgb.train(
         best_param,
