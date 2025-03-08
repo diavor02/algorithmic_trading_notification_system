@@ -148,7 +148,7 @@ def sin_cos_transformation(newRow: pd.Series) -> Tuple[float, float]:
     return np.sin(angle), np.cos(angle)
 
 
-def process_new_row(newRow, df):
+def process_new_row(newRow, df) -> pd.Dataframe:
     """Processes a new data row to generate features for model input.
     
     Transforms the raw data by:
@@ -190,7 +190,7 @@ def process_new_row(newRow, df):
     return new_row
 
 
-def set_target_value_previous_day(df):
+def set_target_value_previous_day(df) -> None:
     """Updates target value for the most recent complete record based on 
     current data.
     
