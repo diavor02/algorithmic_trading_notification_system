@@ -348,7 +348,7 @@ def send_email(prediction_prob: float, email: str) -> None:
         prediction_prob: Model's prediction probability (0-1 range)
     """
     email_sender = 'sendstockupdate@gmail.com'
-    email_password = 'bdvj oexx rgeg epkf'
+    email_password = ''
     email_receiver = email
 
     subject = 'Stock Update'
