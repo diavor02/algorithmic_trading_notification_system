@@ -275,17 +275,16 @@ def calculate_X_y_row_to_predict(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Ser
         Modifies the input DataFrame by adding ratio features and 
         normalizing existing features
     """
-    # Create ratio features
+    
     df['mean_4/7'] = df['mean_4'] / df['mean_7']
     df['mean_4/11'] = df['mean_4'] / df['mean_11']
     df['mean_4/16'] = df['mean_4'] / df['mean_16']
     df['mean_11/16'] = df['mean_11'] / df['mean_16']
 
-    # Extract target and remove from features
     y = df.iloc[1:, df.columns.get_loc('Target')]
     df.drop(columns='Target', inplace=True)
 
-    # Normalize features
+    # Normalizing the price and volume columns
     price_features = df.columns[2:9]
     df[price_features] = df[price_features].div(df['closing_prices'], axis=0)
     df['next_day_forecast'] = df['next_day_forecast'].div(df['closing_prices'], axis=0)
@@ -295,7 +294,6 @@ def calculate_X_y_row_to_predict(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Ser
     
     df.drop(columns=['closing_prices', 'volume'], inplace=True)
 
-    # Prepare prediction row
     row_to_predict = df.iloc[0:1].copy()
     df.drop(index=df.index[0], inplace=True)
 
