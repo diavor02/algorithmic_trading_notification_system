@@ -18,7 +18,7 @@ price_moving_average_periods = [2, 4, 7, 11, 16, 22, 30]
 volume_moving_average_periods = [2, 4, 7]
 
 
-def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = '') -> Optional[Dict]:
+def get_alpha_vantage_data(symbol: str = 'SO', api_key: str = ''):
     """Retrieve daily stock data from Alpha Vantage API.
 
     Args:
@@ -77,7 +77,7 @@ def get_current_day_records() -> Optional[pd.Series]:
 
 
 def get_s3_data(bucket_name: str = "algtradingbucket", 
-                object_key: str = "historical_data.csv") -> Optional[pd.DataFrame]:
+                object_key: str = "historical_data.csv"):
     """Retrieve historical data from S3 bucket.
 
     Args:
