@@ -42,10 +42,7 @@ def lambda_handler(event, context) -> dict:
         if len(historical_df) == 0:
             raise ValueError("Empty historical dataset - initialization required")
 
-        # Prevent duplicate entries that can occur due to:
-        # - Scheduled triggers on market holidays
-        # - Lambda retry mechanisms
-        # - Infrastructure-level redundancies
+        # Prevent duplicate entries due to scheduled triggers on market holidays
         if new_row.name == historical_df.index[0]:
             return {
                 "statusCode": 202,
