@@ -300,7 +300,7 @@ def calculate_X_y_row_to_predict(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Ser
     return df, y, row_to_predict
 
 
-def calculate_prediction_probability(X, y, row_to_predict):
+def calculate_prediction_probability(X, y, row_to_predict) -> float:
     """Use an XGBoost model for predicting the next day price movement. 
 
     Args:
@@ -335,7 +335,6 @@ def calculate_prediction_probability(X, y, row_to_predict):
 
     dpredict = xgb.DMatrix(row_to_predict)
 
-    
     prediction_prob = final_model.predict(dpredict)
 
     return prediction_prob
