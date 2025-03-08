@@ -292,7 +292,7 @@ def calculate_X_y_row_to_predict(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Ser
     volume_features = df.columns[9:12]
     df[volume_features] = df[volume_features].div(df['volume'], axis=0)
     
-    df.drop(columns=['closing_prices', 'volume'], inplace=True)
+    df.drop(columns=['closing_prices'], inplace=True)
 
     row_to_predict = df.iloc[0:1].copy()
     df.drop(index=df.index[0], inplace=True)
