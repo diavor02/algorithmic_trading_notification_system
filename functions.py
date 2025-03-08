@@ -190,7 +190,7 @@ def process_new_row(newRow, df) -> pd.Dataframe:
     return new_row
 
 
-def set_target_value_previous_day(df) -> None:
+def set_target_value_previous_day(df: pd.Dataframe) -> None:
     """Updates target value for the most recent complete record based on 
     current data.
     
